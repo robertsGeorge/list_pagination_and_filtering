@@ -60,14 +60,19 @@ function appendPageLinks(list) {
 
     // add event listener to each pagination link in turn
     for (let i = 0; i < links.length; i++) {
-        const a = ul.querySelectorAll('a')[i] // for each 'a' element in links
-        a.addEventListener('click', (e) => {
-            e.target.className = 'active'; // make the clicked link turn blue
+        // for each individual link in the links nodeList
+        const link = ul.querySelectorAll('a')[i] 
+        link.addEventListener('click', (e) => {
+            // remove className 'active' from any link that has it
+            for (let i = 0; i < links.length; i++) {
+                links[i].className = '';
+            }
+            // add className 'active' to the link that is clicked
+            e.target.className = 'active'; 
             const linkNumber = parseInt(e.target.textContent);
             showPage(list, linkNumber);
         });
     }
-
 }
 
 showPage(list, 1);
