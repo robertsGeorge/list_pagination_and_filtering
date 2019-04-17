@@ -34,7 +34,7 @@ showPage(list, 1);
    functionality to the pagination buttons.
 ***/
 
-function appendPageLinks(list, ) {
+function appendPageLinks(list) {
     const sections = Math.ceil(list.length / perPage); // find out number of sections, = number of buttons
     
     const div = document.createElement('div');
@@ -43,9 +43,12 @@ function appendPageLinks(list, ) {
     div.appendChild(ul);
     page.appendChild(div);
 
-    for () {
-        // while i <= sections create buttons
-        // each iteration, generate and append the button to the paginationUL
+    for (let i = 1; i <= sections; i++) { // for each section...
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.textContent = i; // apply number to the 'button'
+        li.appendChild(a);
+        ul.appendChild(li);
     }
     // generate buttons
     // append buttons
