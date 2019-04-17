@@ -3,6 +3,12 @@ Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
    
+/* TODO:
+    - add eventListeners to each link    
+    - apply className 'active' to current pagination link that is displayed
+    - apply className 'active' to first page on page initial load
+*/
+
 
 const list = document.querySelector('.student-list').children;
 const perPage = 10;
@@ -24,6 +30,7 @@ function showPage(list, section) { // do I need to pass in list, if it's a globa
             list[i].style.display = 'none';
         }
     }
+    // apply className 'active' to current page?
 }
 
 showPage(list, 1);
@@ -37,10 +44,10 @@ showPage(list, 1);
 function appendPageLinks(list) {
 
     // create and append container div/ul to hold pagination links
+    const page = document.querySelector('.page');
     const div = document.createElement('div');
     const ul = document.createElement('ul');
-    const page = document.querySelector('.page');
-
+    
     div.className = 'pagination'; // apply css to links
     div.appendChild(ul);
     page.appendChild(div);
@@ -59,6 +66,20 @@ function appendPageLinks(list) {
         li.appendChild(a);
         ul.appendChild(li);
     }
+
+    // select all pagination links as an iterable 
+    const links = ul.querySelectorAll('a');
+
+    for (let i = 0; i < links.length; i++) {
+        
+        let a = ul.querySelectorAll('a')[i] // for each 'a' element in links
+        
+        a.addEventListener('click', (e) => {
+            e.target.className = 'active'; // make the clicked link turn blue
+            // showPage();
+        });
+    }
+
 }
 
 appendPageLinks(list);
