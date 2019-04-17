@@ -58,6 +58,9 @@ function appendPageLinks(list) {
     // select all pagination links as an iterable 
     const links = ul.querySelectorAll('a');
 
+    // apply class 'active' and its styling to first link on initial page load.
+    links[0].className = 'active';
+
     // add event listener to each pagination link in turn
     for (let i = 0; i < links.length; i++) {
         // for each individual link in the links nodeList, add an event listener/handler
@@ -69,13 +72,15 @@ function appendPageLinks(list) {
             }
             // add className 'active' to the link that is clicked
             e.target.className = 'active'; 
-            // get pageNumber (i.e. linkNumber) to pass to showPage()'s pageNumber parameter
+            // get pageNumber (i.e. link number) to pass to showPage()'s pageNumber parameter
             const pageNumber = parseInt(e.target.textContent);
+            // call showPage() to display the pageNumber that the user clicked
             showPage(list, pageNumber);
         });
     }
 }
 
+// show the first 10 students on initial page load
 showPage(list, 1);
 appendPageLinks(list);
 
