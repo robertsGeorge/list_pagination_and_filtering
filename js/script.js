@@ -40,20 +40,22 @@ function appendPageLinks(list) {
     const div = document.createElement('div');
     const ul = document.createElement('ul');
     const page = document.querySelector('.page');
+    div.className = 'pagination';
     div.appendChild(ul);
     page.appendChild(div);
 
-    for (let i = 1; i <= sections; i++) { // for each section...
+    // for each section, generate and append a 'button' (li + nested a).
+    for (let i = 1; i <= sections; i++) {
         const li = document.createElement('li');
+        // li.className = 'pagination';
         const a = document.createElement('a');
-        a.textContent = i; // apply number to the 'button'
+        // a.className = 'pagination';
+        a.textContent = i;
         li.appendChild(a);
         ul.appendChild(li);
     }
-    // generate buttons
-    // append buttons
-    // add functionality
 }
+
 appendPageLinks(list);
 
 
