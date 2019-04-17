@@ -35,16 +35,21 @@ showPage(list, 1);
 ***/
 
 function appendPageLinks(list) {
-    const sections = Math.ceil(list.length / perPage); // find out number of sections, = number of buttons
-    
+
+    // create and append container div/ul to hold pagination links
     const div = document.createElement('div');
     const ul = document.createElement('ul');
     const page = document.querySelector('.page');
-    div.className = 'pagination';
+
+    div.className = 'pagination'; // apply css to links
     div.appendChild(ul);
     page.appendChild(div);
 
-    // for each section, generate and append a 'button' (li + nested a).
+    /* establish number of pagination links (sections) to generate. 
+    - If 54 students in list, then 6 sections are needed, hence Math.ceil */    
+    const sections = Math.ceil(list.length / perPage); 
+
+    // for each section, generate and append a pagination link (li + nested a).
     for (let i = 1; i <= sections; i++) {
         const li = document.createElement('li');
         // li.className = 'pagination';
