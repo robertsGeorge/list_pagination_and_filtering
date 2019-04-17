@@ -24,18 +24,20 @@ const perPage = 10;
    list except for the ten you want to show.
 ***/
 function showPage(list, section) {
-    
-    perPage * section // startIndex
-    perPage * section + perPage // endIndex
+  
+    const startIndex = perPage * section;
+    const endIndex = perPage * section + perPage - 1;
+
     for (let i = 0; i < list.length; i++) {
         if (i >= startIndex && i <= endIndex) {
-            list[i] // show these items
+            list[i].style.display = '';
         } else {
-            // hide all the other items
+            list[i].style.display = 'none';
         }
     }
 }
 
+showPage(list, 0);
 
 
 
