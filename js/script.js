@@ -14,10 +14,6 @@ const list = document.querySelector('.student-list').children;
 const perPage = 10;
 
 
-/*** 
-   Create the `showPage` function to hide all of the items in the 
-   list except for the ten you want to show.
-***/
 function showPage(list, section) { // do I need to pass in list, if it's a globally declared const?
   
     const startIndex = perPage * section - perPage;
@@ -33,16 +29,8 @@ function showPage(list, section) { // do I need to pass in list, if it's a globa
     // apply className 'active' to current page?
 }
 
-showPage(list, 1);
-
-
-/*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
 
 function appendPageLinks(list) {
-
     // create and append container div/ul to hold pagination links
     const page = document.querySelector('.page');
     const div = document.createElement('div');
@@ -70,18 +58,19 @@ function appendPageLinks(list) {
     // select all pagination links as an iterable 
     const links = ul.querySelectorAll('a');
 
+    // add event listener to each pagination link in turn
     for (let i = 0; i < links.length; i++) {
-        
-        let a = ul.querySelectorAll('a')[i] // for each 'a' element in links
-        
+        const a = ul.querySelectorAll('a')[i] // for each 'a' element in links
         a.addEventListener('click', (e) => {
             e.target.className = 'active'; // make the clicked link turn blue
-            // showPage();
+            const linkNumber = parseInt(e.target.textContent);
+            showPage(list, linkNumber);
         });
     }
 
 }
 
+showPage(list, 1);
 appendPageLinks(list);
 
 
