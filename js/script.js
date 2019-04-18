@@ -58,19 +58,19 @@ function appendPageLinks(list) {
 
     // add an event listener to each page link
     for (let i = 0; i < links.length; i++) {
-        // for each individual link in the links nodeList, add an event listener/handler
+        // select next link on each iteration
         const link = ul.querySelectorAll('a')[i] 
-        
+        // add event listener to link on each iteration
         link.addEventListener('click', (e) => {
-            // remove className 'active' from any link that has it
+            // when a link is clicked, remove className 'active' from previous active link
             for (let i = 0; i < links.length; i++) {
                 links[i].className = '';
             }
-            // add className 'active' to the link that is clicked
+            // make the clicked link the 'active' link
             e.target.className = 'active'; 
-            // get pageNumber (i.e. link number) to pass to showPage()'s pageNumber parameter
+            // get pageNumber from clicked link to pass to showPage()
             const pageNumber = parseInt(e.target.textContent);
-            // call showPage() to display the pageNumber that the user clicked
+            // call showPage() to display the page corresponding to the link clicked
             showPage(list, pageNumber);
         });
     }
