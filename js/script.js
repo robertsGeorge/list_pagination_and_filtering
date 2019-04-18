@@ -54,8 +54,8 @@ function appendPageLinks(list) {
     // show the first 10 students when appendPageLinks() is called, by passing 1 as pageNumber to showPage
     showPage(list, 1);
     
-
-    // REFACTORED EVENT HANDLING (event bubbling)
+    // event listener added to parent ul, using event bubbling and event object to target link clicked
+    // the event-handler/callback-function calls showPage() passing it the page number of link that was clicked, and resets/sets 'active' styling
     ul.addEventListener('click', (e) => {
         // select all page links as an iterable nodeList
         const links = ul.querySelectorAll('a');
