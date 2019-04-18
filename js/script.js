@@ -41,6 +41,8 @@ function appendPageLinks(list) {
         const a = document.createElement('a');
         // give each link a number starting from 1, using variable i
         a.textContent = i;
+        // take user to top of new page shown when they click a page link
+        a.href = '#';
         li.appendChild(a);
         ul.appendChild(li);
     }
