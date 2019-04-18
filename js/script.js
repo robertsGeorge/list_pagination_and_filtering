@@ -54,7 +54,7 @@ function appendPageLinks(list) {
     // show the first 10 students when appendPageLinks() is called, by passing 1 as pageNumber to showPage
     showPage(list, 1);
     
-    
+
     // REFACTORED EVENT HANDLING (event bubbling)
     ul.addEventListener('click', (e) => {
         // select all page links as an iterable nodeList
@@ -70,25 +70,6 @@ function appendPageLinks(list) {
         // call showPage() to display the page corresponding to the link clicked
         showPage(list, pageNumber);
     });
-
-    /* // add an event listener to each page link
-    for (let i = 0; i < links.length; i++) {
-        // select next link on each iteration
-        const link = ul.querySelectorAll('a')[i] 
-        // add event listener to link on each iteration
-        link.addEventListener('click', (e) => {
-            // when a link is clicked, remove className 'active' from previous active link
-            for (let i = 0; i < links.length; i++) {
-                links[i].className = '';
-            }
-            // make the clicked link the 'active' link
-            link.className = 'active'; 
-            // get pageNumber from clicked link to pass to showPage()
-            const pageNumber = parseInt(link.textContent);
-            // call showPage() to display the page corresponding to the link clicked
-            showPage(list, pageNumber);
-        });
-    } */
 }
 
 appendPageLinks(list); 
