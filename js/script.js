@@ -48,12 +48,14 @@ function appendPageLinks(list) {
         ul.appendChild(li);
     }
 
-    // select all page links as an iterable nodeList
-    const links = ul.querySelectorAll('a');
     // apply class 'active' and its styling to first page link, when appendPageLinks() is called
-    links[0].className = 'active';
+    const firstLink = ul.querySelector('a');
+    firstLink.className = 'active';
     // show the first 10 students when appendPageLinks() is called, by passing 1 as pageNumber to showPage
     showPage(list, 1);
+    // select all page links as an iterable nodeList
+    const links = ul.querySelectorAll('a');
+    
 
 
     // REFACTORED EVENT HANDLING (event bubbling)
