@@ -60,9 +60,7 @@ function appendPageLinks(list) {
         // select all page links as an iterable nodeList
         const links = ul.querySelectorAll('a');
         // when a link is clicked, remove className 'active' from previous active link
-        for (let i = 0; i < links.length; i++) {
-            links[i].className = '';
-        }
+        links.forEach((link) => link.className = '');
         // make the clicked link the 'active' link
         e.target.className = 'active';
         // get pageNumber from clicked link to pass to showPage()
