@@ -12,11 +12,10 @@ const perPage = 10;
 function showPage(list, pageNumber) {
     //page numbers start from 1 (not 0), so need to subtract perPage to get correct startIndex
     const startIndex = perPage * pageNumber - perPage; 
-    // because array-like-objects index from 0, need to subtract 1 to get correct endIndex
-    const endIndex = perPage * pageNumber - 1;
+    const endIndex = perPage * pageNumber;
     // for each student list item, if their index position falls within the start/end range, display it
     for (let i = 0; i < list.length; i++) {
-        if (i >= startIndex && i <= endIndex) {
+        if (i >= startIndex && i < endIndex) {
             list[i].style.display = '';
         } else {
             list[i].style.display = 'none';
