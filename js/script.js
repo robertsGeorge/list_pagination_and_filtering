@@ -73,3 +73,20 @@ appendPageLinks(list);
 
 
 
+function appendSearchComponent() {
+    const pageHeader = document.querySelector('.page-header');
+    const searchDiv = document.createElement('div');
+    const searchInput = document.createElement('input');
+    const searchButton = document.createElement('button');
+    searchDiv.className = 'student-search';
+    searchInput.placeholder = 'Search for students...';
+    searchButton.textContent = 'Search';
+    searchDiv.appendChild(searchInput);
+    searchDiv.appendChild(searchButton);
+    pageHeader.appendChild(searchDiv);
+}
+
+
+
+// function call for testing via pausing in chrome debugger using breakpoints inside the function
+appendSearchComponent();
