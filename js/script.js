@@ -50,8 +50,12 @@ function appendPageLinks(list) {
 
     // select all page links as an iterable nodeList
     const links = ul.querySelectorAll('a');
-    // apply class 'active' and its styling to first page link on call to appendPageLinks()
+    // apply class 'active' and its styling to first page link, when appendPageLinks() is called
     links[0].className = 'active';
+    // show the first 10 students when appendPageLinks() is called, by passing 1 as pageNumber to showPage
+    showPage(list, 1);
+
+
     // add an event listener to each page link
     for (let i = 0; i < links.length; i++) {
         // for each individual link in the links nodeList, add an event listener/handler
@@ -70,12 +74,8 @@ function appendPageLinks(list) {
             showPage(list, pageNumber);
         });
     }
-
-
 }
 
-// show the first 10 students on initial page load by passing 1 to showPage 2nd param
-showPage(list, 1); // move this call inside appendPageLinks()
 appendPageLinks(list); 
 
 
