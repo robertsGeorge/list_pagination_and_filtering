@@ -53,13 +53,12 @@ function appendPageLinks(list) {
     firstLink.className = 'active';
     // show the first 10 students when appendPageLinks() is called, by passing 1 as pageNumber to showPage
     showPage(list, 1);
-    // select all page links as an iterable nodeList
-    const links = ul.querySelectorAll('a');
     
-
-
+    
     // REFACTORED EVENT HANDLING (event bubbling)
     ul.addEventListener('click', (e) => {
+        // select all page links as an iterable nodeList
+        const links = ul.querySelectorAll('a');
         // when a link is clicked, remove className 'active' from previous active link
         for (let i = 0; i < links.length; i++) {
             links[i].className = '';
