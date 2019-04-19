@@ -117,7 +117,7 @@ searchDiv.addEventListener('click', (e) => {
         // search each element's h3 textContent in list for searchTerm
         list.forEach((student) => {
             const studentName = student.querySelector('h3').textContent;
-            if ( studentName.match(searchTerm).join(' ') ) {
+            if ( studentName.match(searchTerm) !== null ) {
                 student.style.display = '';
             } else {
                 student.style.display = 'none';
