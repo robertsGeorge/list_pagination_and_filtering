@@ -113,21 +113,21 @@ If the letter S is typed in, all items with an S in the name will show.
 
 const searchForm = document.querySelector('.student-search');
 
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = searchForm.firstElementChild;
+    const searchTerm = input.value.toLowerCase();
 
-searchForm.addEventListener('click', (e) => {
+    list.forEach((student) => {
+        const studentName = student.querySelector('h3').textContent;
+        
+        if ( studentName.match(searchTerm) === null ) {
+            student.style.display = 'none';
+        } else student.style.display = '';
+    });
 
-    if (e.target.tagName === 'BUTTON') {
-        const input = searchForm.firstElementChild;
-        const searchTerm = input.value.toLowerCase();
-
-        list.forEach( (student) => {
-            const studentName = student.querySelector('h3').textContent;
-            
-            if ( studentName.match(searchTerm) === null ) {
-                student.style.display = 'none';
-            } else student.style.display = '';
-        });
-    }
+    // if (e.target.tagName === 'BUTTON') {
+    // }
 });
 
 
