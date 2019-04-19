@@ -13,6 +13,7 @@
 
 ## Skills, techniques and processes used
 - Vanilla JavaScript; no libraries or third-party code-snippets have been used
+- "use strict";
 - function declarations, function parameters, arrow functions
 - Awareness of scope: declaring as few global variables as possible, keeping functions self-contained/modular where possible
 - array iteration using for loops and the forEach method
