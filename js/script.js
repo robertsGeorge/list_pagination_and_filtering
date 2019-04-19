@@ -10,6 +10,15 @@ const list = document.querySelectorAll('.student-item');
 // max number of students to display per page
 const perPage = 10;
 
+// create and append h4 with no results message for if a search term returns no students
+const listContainer = document.querySelector('.student-list');
+const message = document.createElement('h4');
+message.textContent = 'No matching students. Please try another search term.';
+message.className = 'message'; // for styling the message
+message.style.display = 'none'; // Not displayed unless turned on in findMatchingStudents()
+listContainer.appendChild(message);
+
+
 // From the list passed to it, only display those students on the pageNumber passed in
 function showPage(list, pageNumber) {
     //page numbers start from 1 (not 0), so need to subtract perPage to get correct startIndex
@@ -107,6 +116,11 @@ function findMatchingStudents(list, searchTerm) {
             listOfMatches.push(student);
         }
     });
+    // display no results message if there are no matches
+    if (listOfMatches.length === 0) {
+        message.style.display = '';
+    } else message.style.display = 'none';
+    
     return listOfMatches;
 }
 
@@ -125,22 +139,6 @@ inputField.addEventListener('keyup', () => { // even clearing search field by pr
     removeCurrentPageLinks();
     showPage(listOfMatches, 1); // hides all in list apart from 1st 10
     appendPageLinks(listOfMatches);
-    
-    /* const listContainer = document.querySelector('.student-list');
-    const message = document.createElement('h4');
-    message.textContent = 'No matching students. Please try another search term.';
-    message.className = 'message';
-    message.style.display = 'none'
-    listContainer.appendChild(message);
-
-    message.style.display = '';
-    
-    if (listContainer.firstChild === message) {
-        listContainer.removeChild(message);
-
-    } else if (listOfMatches.length === 0) {
-        listContainer.appendChild(message);
-    }  */
 });
 // kept 'submit' eventListener in addition to 'keyup' in case user pastes text in with mouse-clicks (no keyup event)
 // listening for submit event on the parent form element means it can respond to button or input element (i.e. when user presses 'enter' on keyboard).
