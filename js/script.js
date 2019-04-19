@@ -99,7 +99,7 @@ appendSearchForm();
 const searchForm = document.querySelector('.student-search');
 const inputField = searchForm.firstElementChild;
 
-/* 
+
 function findMatchingStudents(list, searchTerm) {
     list.forEach((student) => {
         const studentName = student.querySelector('h3').textContent;
@@ -109,37 +109,22 @@ function findMatchingStudents(list, searchTerm) {
     });
 }
 
-*/
+
 
 
 // listening for submit event on the form element means it can respond to button (see attributes) OR the input element (i.e. when user presses 'enter' on keyboard).
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const searchTerm = inputField.value.toLowerCase();
-    
-    list.forEach((student) => {
-        const studentName = student.querySelector('h3').textContent;
-        if ( studentName.match(searchTerm) === null ) {
-            student.style.display = 'none';
-        } else student.style.display = '';
-    });
-
-    // if (e.target.tagName === 'BUTTON') {
-    // }
+    findMatchingStudents(list, searchTerm);
 });
 
 inputField.addEventListener('keyup', () => {
     const searchTerm = inputField.value.toLowerCase();
-    
-    list.forEach((student) => {
-        const studentName = student.querySelector('h3').textContent;
-        if ( studentName.match(searchTerm) === null ) {
-            student.style.display = 'none';
-        } else student.style.display = '';
-    });
+    findMatchingStudents(list, searchTerm);
 });
 
-
+// iboya
 
 // random testing
 // const input = document.querySelector('input');
