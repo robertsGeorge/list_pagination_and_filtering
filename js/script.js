@@ -3,6 +3,21 @@ Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
 
+
+
+/***
+
+ Dear Reviewer,
+
+ Just to let you know I am trying for an 'Exceeds Expectations' grade (but happy to pass with a 'Meets Expectations' grade if my code falls short).
+
+ Thanks in advance for your review!
+ George
+
+***/
+
+
+
 "use strict";
 
 // select all student list items and store them in global variable
@@ -149,24 +164,14 @@ function filterAndPaginateViaSearch(list) {
 
 // filter the list as the user types in the search input field, and paginate the results 
 inputField.addEventListener('keyup', () => { 
-    // even clearing search field by pressing delete key triggers a keyup event, so this callback runs again. In this case searchTerm will be an empty string. passing an empty string to findMatchingStudents() as its searchTerm parameter results in listOfMatches containing all students in the global 'list'. To then call showPage and appendPageLinks passing in listOfMatches is like running these functions on the global 'list' variable. So, when the user deletes their search entries, it's like reloading the program.
+    // Even clearing search field by pressing delete key triggers a keyup event, so this callback runs again. In this case searchTerm will be an empty string. passing an empty string to findMatchingStudents() as its searchTerm parameter results in listOfMatches containing all students in the global 'list'. To then call showPage and appendPageLinks passing in listOfMatches is like running these functions on the global 'list' variable. So, when the user deletes their search entries, it's like reloading the program.
     filterAndPaginateViaSearch(list);
-    /* const searchTerm = inputField.value.toLowerCase();
-    const listOfMatches = findMatchingStudents(list, searchTerm); 
-    removeCurrentPageLinks();
-    showPage(listOfMatches, 1); // start by showing the first page
-    appendPageLinks(listOfMatches); // if there are more than 10 results */
 });
 // Have kept 'submit' eventListener in addition to 'keyup' in case user pastes text in with mouse-clicks (no keyup event)
 // Listening for submit event on the parent form element means it can respond to button or input element (i.e. when user presses 'enter' on keyboard).
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault(); // prevent form being submitted in normal way, causing page reload
     filterAndPaginateViaSearch(list);
-    /* const searchTerm = inputField.value.toLowerCase();
-    const listOfMatches = findMatchingStudents(list, searchTerm);
-    removeCurrentPageLinks();
-    showPage(listOfMatches, 1);
-    appendPageLinks(listOfMatches); */
 });
 
 
