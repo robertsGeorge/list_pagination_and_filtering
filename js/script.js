@@ -2,7 +2,9 @@
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
-   
+
+"use strict";
+
 // select all student list items and store them in global variable
 const list = document.querySelector('.student-list').children;
 // max number of students to display per page
@@ -109,9 +111,13 @@ const searchDiv = document.querySelector('.student-search');
 
 searchDiv.addEventListener('click', (e) => {
     if (e.target.tagName = 'BUTTON') {
-        const input = searchDiv.firstElementChild;
-        const searchTerm = input.value.toLowerCase();
-
+        const inputField = searchDiv.firstElementChild;
+        const searchTerm = inputField.value.toLowerCase();
+        // search each element's h3 textContent in list for searchTerm
+        list.forEach((studentItem) => {
+            
+        });
+        // studentName = list[i].querySelector('h3').textContent
     }
 
 });
