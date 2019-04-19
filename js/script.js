@@ -94,33 +94,31 @@ function appendSearchForm() {
 }
 appendSearchForm();
 
-/* 
-When the "Search" button is clicked, the list is filtered by student name 
-for those that include the search value. 
-For example, if the name Phillip is typed into the box, 
-list all items with a name that includes Phillip. 
-If the letter S is typed in, all items with an S in the name will show.
-*/
 
-// event listener listening for 'submit' button
-// when search button is clicked, grab input.value - will be a string.
-// make the string toLowerCase (all student names are in lower case)
-// search through the list HTMLCollection for the input.value string
-// IF the string is present in a list element's inner h3's textContent (li.querySelector..), set display to '';
-    // -- how to search a string for a pattern? REGEX? ; 
-               // str.match('searchstring') - When the parameter is a string or a number, it is implicitly converted to a RegExp by using new RegExp(obj).
-// ELSE set display to 'none'.
 
 const searchForm = document.querySelector('.student-search');
+const inputField = searchForm.firstElementChild;
 
-searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = searchForm.firstElementChild;
-    const searchTerm = input.value.toLowerCase();
-
+/* 
+function findMatchingStudents(list, searchTerm) {
     list.forEach((student) => {
         const studentName = student.querySelector('h3').textContent;
-        
+        if ( studentName.match(searchTerm) === null ) {
+            student.style.display = 'none';
+        } else student.style.display = '';
+    });
+}
+
+*/
+
+
+// listening for submit event on the form element means it can respond to button (see attributes) OR the input element (i.e. when user presses 'enter' on keyboard).
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const searchTerm = inputField.value.toLowerCase();
+    
+    list.forEach((student) => {
+        const studentName = student.querySelector('h3').textContent;
         if ( studentName.match(searchTerm) === null ) {
             student.style.display = 'none';
         } else student.style.display = '';
@@ -130,7 +128,16 @@ searchForm.addEventListener('submit', (e) => {
     // }
 });
 
-
+inputField.addEventListener('keyup', () => {
+    const searchTerm = inputField.value.toLowerCase();
+    
+    list.forEach((student) => {
+        const studentName = student.querySelector('h3').textContent;
+        if ( studentName.match(searchTerm) === null ) {
+            student.style.display = 'none';
+        } else student.style.display = '';
+    });
+});
 
 
 
