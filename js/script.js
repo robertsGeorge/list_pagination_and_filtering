@@ -101,12 +101,17 @@ const inputField = searchForm.firstElementChild;
 
 
 function findMatchingStudents(list, searchTerm) {
+    const listOfMatches = [];
     list.forEach((student) => {
         const studentName = student.querySelector('h3').textContent;
         if ( studentName.match(searchTerm) === null ) {
             student.style.display = 'none';
-        } else student.style.display = '';
+        } else {
+            student.style.display = '';  // eventually use showPage to set display
+            listOfMatches.push(student);
+        }
     });
+    return listOfMatches;
 }
 
 
@@ -124,8 +129,3 @@ inputField.addEventListener('keyup', () => {
     findMatchingStudents(list, searchTerm);
 });
 
-// iboya
-
-// random testing
-// const input = document.querySelector('input');
-// console.log(input.value);
