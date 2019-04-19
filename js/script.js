@@ -108,8 +108,8 @@ const searchDiv = document.querySelector('.student-search');
 
 
 searchDiv.addEventListener('click', (e) => {
-    const input = searchDiv.firstElementChild;
     if (e.target.tagName = 'BUTTON') {
+        const input = searchDiv.firstElementChild;
         const searchTerm = input.value.toLowerCase();
 
     }
