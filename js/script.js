@@ -140,7 +140,7 @@ inputField.addEventListener('keyup', () => { // even clearing search field by pr
     showPage(listOfMatches, 1); // hides all in list apart from 1st 10
     appendPageLinks(listOfMatches);
 });
-// kept 'submit' eventListener in addition to 'keyup' in case user pastes text in with mouse-clicks (no keyup event)
+// Have kept 'submit' eventListener in addition to 'keyup' in case user pastes text in with mouse-clicks (no keyup event)
 // listening for submit event on the parent form element means it can respond to button or input element (i.e. when user presses 'enter' on keyboard).
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault(); // prevent form being submitted in normal way, causing page reload
