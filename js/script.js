@@ -52,8 +52,6 @@ function appendPageLinks(list) {
         // apply class 'active' and its styling to first page link, when appendPageLinks() is called
         const firstLink = ul.querySelector('a');
         firstLink.className = 'active';
-        // show the first 10 students when appendPageLinks() is called, by passing 1 as pageNumber to showPage
-        showPage(list, 1);
         
         // event listener added to parent ul, using event bubbling and event object to target link clicked
         // the event-handler/callback-function calls showPage() passing it the page number of link that was clicked, and resets/sets 'active' styling
@@ -71,6 +69,8 @@ function appendPageLinks(list) {
         });
     }
 }
+// show the first 10 students when page initially loads, by passing 1 as pageNumber to showPage
+showPage(list, 1);
 appendPageLinks(list); 
 
 
@@ -129,6 +129,7 @@ inputField.addEventListener('keyup', () => {
     const searchTerm = inputField.value.toLowerCase();
     const listOfMatches = findMatchingStudents(list, searchTerm);
     removeCurrentPageLinks();
+    showPage(listOfMatches, 1);
     appendPageLinks(listOfMatches);
 });
 
@@ -139,6 +140,7 @@ searchForm.addEventListener('submit', (e) => {
     const searchTerm = inputField.value.toLowerCase();
     const listOfMatches = findMatchingStudents(list, searchTerm);
     removeCurrentPageLinks();
+    showPage(listOfMatches, 1);
     appendPageLinks(listOfMatches);
 });
 
