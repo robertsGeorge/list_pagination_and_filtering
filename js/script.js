@@ -52,7 +52,7 @@ function appendPageLinks(list) {
         // apply class 'active' and its styling to first page link, when appendPageLinks() is called
         const firstLink = ul.querySelector('a');
         firstLink.className = 'active';
-        
+
         // event listener added to parent ul, using event bubbling and event object to target link clicked
         // the event-handler/callback-function calls showPage() passing it the page number of link that was clicked, and resets/sets 'active' styling
         ul.addEventListener('click', (e) => {
@@ -69,11 +69,12 @@ function appendPageLinks(list) {
         });
     }
 }
-// show the first 10 students when page initially loads, by passing 1 as pageNumber to showPage
-showPage(list, 1);
-appendPageLinks(list); 
 
-
+function removeCurrentPageLinks() {
+    const page = document.querySelector('.page');
+    const paginationDiv = document.querySelector('.pagination');
+    page.removeChild(paginationDiv);
+}
 
 function appendSearchForm() {
     const pageHeader = document.querySelector('.page-header');
@@ -92,13 +93,6 @@ function appendSearchForm() {
     searchForm.appendChild(searchButton);
     pageHeader.appendChild(searchForm);
 }
-appendSearchForm();
-
-
-
-const searchForm = document.querySelector('.student-search');
-const inputField = searchForm.firstElementChild;
-
 
 function findMatchingStudents(list, searchTerm) {
     const listOfMatches = [];
@@ -114,16 +108,14 @@ function findMatchingStudents(list, searchTerm) {
     return listOfMatches;
 }
 
-function removeCurrentPageLinks() {
-    const page = document.querySelector('.page');
-    const paginationDiv = document.querySelector('.pagination');
-    page.removeChild(paginationDiv);
-}
+// show the first 10 students when page initially loads, by passing 1 as pageNumber to showPage
+showPage(list, 1);
+appendPageLinks(list); 
+appendSearchForm();
 
 
-
-
-
+const searchForm = document.querySelector('.student-search');
+const inputField = searchForm.firstElementChild;
 
 inputField.addEventListener('keyup', () => {
     const searchTerm = inputField.value.toLowerCase();
@@ -132,7 +124,6 @@ inputField.addEventListener('keyup', () => {
     showPage(listOfMatches, 1);
     appendPageLinks(listOfMatches);
 });
-
 // kept 'submit' eventListener in addition to 'keyup' in case user pastes text in with mouse-clicks (no keyup event)
 // listening for submit event on the parent form element means it can respond to button or input element (i.e. when user presses 'enter' on keyboard).
 searchForm.addEventListener('submit', (e) => {
