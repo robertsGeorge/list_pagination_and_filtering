@@ -75,19 +75,24 @@ appendPageLinks(list);
 
 
 
-function appendSearchComponent() {
+function appendSearchForm() {
     const pageHeader = document.querySelector('.page-header');
-    const searchDiv = document.createElement('div');
+    const searchForm = document.createElement('form');
     const searchInput = document.createElement('input');
     const searchButton = document.createElement('button');
-    searchDiv.className = 'student-search';
+    searchForm.className = 'student-search';
+    searchInput.type = 'text';
+    searchInput.name = 'search-term';
     searchInput.placeholder = 'Search for students...';
+    searchButton.type = 'submit';
+    searchButton.name = 'submit';
+    searchButton.value = 'submit';
     searchButton.textContent = 'Search';
-    searchDiv.appendChild(searchInput);
-    searchDiv.appendChild(searchButton);
-    pageHeader.appendChild(searchDiv);
+    searchForm.appendChild(searchInput);
+    searchForm.appendChild(searchButton);
+    pageHeader.appendChild(searchForm);
 }
-appendSearchComponent();
+appendSearchForm();
 
 /* 
 When the "Search" button is clicked, the list is filtered by student name 
@@ -106,14 +111,14 @@ If the letter S is typed in, all items with an S in the name will show.
                // str.match('searchstring') - When the parameter is a string or a number, it is implicitly converted to a RegExp by using new RegExp(obj).
 // ELSE set display to 'none'.
 
-const searchDiv = document.querySelector('.student-search');
+const searchForm = document.querySelector('.student-search');
 
 
-searchDiv.addEventListener('click', (e) => {
+searchForm.addEventListener('click', (e) => {
 
     if (e.target.tagName === 'BUTTON') {
-        const inputField = searchDiv.firstElementChild;
-        const searchTerm = inputField.value.toLowerCase();
+        const input = searchForm.firstElementChild;
+        const searchTerm = input.value.toLowerCase();
 
         list.forEach( (student) => {
             const studentName = student.querySelector('h3').textContent;
