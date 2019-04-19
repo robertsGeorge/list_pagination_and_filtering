@@ -6,7 +6,7 @@ FSJS project 2 - List Filter and Pagination
 "use strict";
 
 // select all student list items and store them in global variable
-const list = document.querySelector('.student-list').children;
+const list = document.querySelectorAll('.student-item');
 // max number of students to display per page
 const perPage = 10;
 
