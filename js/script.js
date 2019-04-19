@@ -115,12 +115,12 @@ searchDiv.addEventListener('click', (e) => {
         const inputField = searchDiv.firstElementChild;
         const searchTerm = inputField.value.toLowerCase();
 
-        list.forEach((student) => {
+        list.forEach( (student) => {
             const studentName = student.querySelector('h3').textContent;
             
-            if ( studentName.match(searchTerm) !== null ) {
-                student.style.display = '';
-            } else student.style.display = 'none';
+            if ( studentName.match(searchTerm) === null ) {
+                student.style.display = 'none';
+            } else student.style.display = '';
         });
     }
 });
