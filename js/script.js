@@ -37,42 +37,40 @@ function appendPageLinks(list) {
 
     // Establish number of page links to generate. If 54 students in list, then 6 pages are needed, hence Math.ceil    
     const numOfPages = Math.ceil(list.length / perPage); 
-    
-    
-    // for each page, generate and append a page link (li + nested a).
-    for (let i = 1; i <= numOfPages; i++) {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        // give each link a number starting from 1, using variable i
-        a.textContent = i;
-        // take user to top of new page shown when they click a page link
-        a.href = '#';
-        li.appendChild(a);
-        ul.appendChild(li);
+    if (numOfPages > 1) {
+        // for each page, generate and append a page link (li + nested a).
+        for (let i = 1; i <= numOfPages; i++) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            // give each link a number starting from 1, using variable i
+            a.textContent = i;
+            // take user to top of new page shown when they click a page link
+            a.href = '#';
+            li.appendChild(a);
+            ul.appendChild(li);
+        }
+        // apply class 'active' and its styling to first page link, when appendPageLinks() is called
+        const firstLink = ul.querySelector('a');
+        firstLink.className = 'active';
+        // show the first 10 students when appendPageLinks() is called, by passing 1 as pageNumber to showPage
+        showPage(list, 1);
+        
+        // event listener added to parent ul, using event bubbling and event object to target link clicked
+        // the event-handler/callback-function calls showPage() passing it the page number of link that was clicked, and resets/sets 'active' styling
+        ul.addEventListener('click', (e) => {
+            // select all page links as an iterable nodeList
+            const links = ul.querySelectorAll('a');
+            // when a link is clicked, remove className 'active' from previous active link
+            links.forEach((link) => link.className = '');
+            // make the clicked link the 'active' link
+            e.target.className = 'active';
+            // get pageNumber from clicked link to pass to showPage()
+            const pageNumber = parseInt(e.target.textContent);
+            // call showPage() to display the page corresponding to the link clicked
+            showPage(list, pageNumber);
+        });
     }
-
-    // apply class 'active' and its styling to first page link, when appendPageLinks() is called
-    const firstLink = ul.querySelector('a');
-    firstLink.className = 'active';
-    // show the first 10 students when appendPageLinks() is called, by passing 1 as pageNumber to showPage
-    showPage(list, 1);
-    
-    // event listener added to parent ul, using event bubbling and event object to target link clicked
-    // the event-handler/callback-function calls showPage() passing it the page number of link that was clicked, and resets/sets 'active' styling
-    ul.addEventListener('click', (e) => {
-        // select all page links as an iterable nodeList
-        const links = ul.querySelectorAll('a');
-        // when a link is clicked, remove className 'active' from previous active link
-        links.forEach((link) => link.className = '');
-        // make the clicked link the 'active' link
-        e.target.className = 'active';
-        // get pageNumber from clicked link to pass to showPage()
-        const pageNumber = parseInt(e.target.textContent);
-        // call showPage() to display the page corresponding to the link clicked
-        showPage(list, pageNumber);
-    });
 }
-
 appendPageLinks(list); 
 
 
