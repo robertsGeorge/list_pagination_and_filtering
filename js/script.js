@@ -85,8 +85,41 @@ function appendSearchComponent() {
     searchDiv.appendChild(searchButton);
     pageHeader.appendChild(searchDiv);
 }
-
-
-
-// function call for testing via pausing in chrome debugger using breakpoints inside the function
 appendSearchComponent();
+
+/* 
+When the "Search" button is clicked, the list is filtered by student name 
+for those that include the search value. 
+For example, if the name Phillip is typed into the box, 
+list all items with a name that includes Phillip. 
+If the letter S is typed in, all items with an S in the name will show.
+*/
+
+// event listener listening for 'submit' button
+// when search button is clicked, grab input.value - will be a string.
+// make the string toLowerCase (all student names are in lower case)
+// search through the list HTMLCollection for the input.value string
+// IF the string is present in a list element's inner h3's textContent (li.querySelector..), set display to '';
+    // -- how to search a string for a pattern? REGEX? ; 
+               // str.match('searchstring') - When the parameter is a string or a number, it is implicitly converted to a RegExp by using new RegExp(obj).
+// ELSE set display to 'none'.
+
+const searchDiv = document.querySelector('.student-search');
+
+
+searchDiv.addEventListener('click', (e) => {
+    const input = searchDiv.firstElementChild;
+    if (e.target.tagName = 'BUTTON') {
+        const searchTerm = input.value.toLowerCase();
+
+    }
+
+});
+
+
+
+
+
+// random testing
+// const input = document.querySelector('input');
+// console.log(input.value);
