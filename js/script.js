@@ -37,6 +37,8 @@ function appendPageLinks(list) {
 
     // Establish number of page links to generate. If 54 students in list, then 6 pages are needed, hence Math.ceil    
     const numOfPages = Math.ceil(list.length / perPage); 
+    
+    
     // for each page, generate and append a page link (li + nested a).
     for (let i = 1; i <= numOfPages; i++) {
         const li = document.createElement('li');
@@ -105,27 +107,35 @@ function findMatchingStudents(list, searchTerm) {
     list.forEach((student) => {
         const studentName = student.querySelector('h3').textContent;
         if ( studentName.match(searchTerm) === null ) {
-            student.style.display = 'none';
+            student.style.display = 'none'; // eventually use showPage to set display?
         } else {
-            student.style.display = '';  // eventually use showPage to set display
+            student.style.display = '';  // eventually use showPage to set display?
             listOfMatches.push(student);
         }
     });
     return listOfMatches;
 }
 
-
+function removeCurrentPageLinks() {
+    const page = document.querySelector('.page');
+    const paginationDiv = document.querySelector('.pagination');
+    page.removeChild(paginationDiv);
+}
 
 
 // listening for submit event on the form element means it can respond to button (see attributes) OR the input element (i.e. when user presses 'enter' on keyboard).
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const searchTerm = inputField.value.toLowerCase();
-    findMatchingStudents(list, searchTerm);
+    const listOfMatches = findMatchingStudents(list, searchTerm);
+    removeCurrentPageLinks();
+    appendPageLinks(listOfMatches);
 });
 
 inputField.addEventListener('keyup', () => {
     const searchTerm = inputField.value.toLowerCase();
-    findMatchingStudents(list, searchTerm);
+    const listOfMatches = findMatchingStudents(list, searchTerm);
+    removeCurrentPageLinks();
+    appendPageLinks(listOfMatches);
 });
 
