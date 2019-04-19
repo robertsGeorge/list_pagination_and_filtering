@@ -121,7 +121,19 @@ function removeCurrentPageLinks() {
 }
 
 
-// listening for submit event on the form element means it can respond to button (see attributes) OR the input element (i.e. when user presses 'enter' on keyboard).
+
+
+
+
+inputField.addEventListener('keyup', () => {
+    const searchTerm = inputField.value.toLowerCase();
+    const listOfMatches = findMatchingStudents(list, searchTerm);
+    removeCurrentPageLinks();
+    appendPageLinks(listOfMatches);
+});
+
+// kept 'submit' eventListener in addition to 'keyup' in case user pastes text in with mouse-clicks (no keyup event)
+// listening for submit event on the parent form element means it can respond to button or input element (i.e. when user presses 'enter' on keyboard).
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const searchTerm = inputField.value.toLowerCase();
@@ -130,10 +142,4 @@ searchForm.addEventListener('submit', (e) => {
     appendPageLinks(listOfMatches);
 });
 
-inputField.addEventListener('keyup', () => {
-    const searchTerm = inputField.value.toLowerCase();
-    const listOfMatches = findMatchingStudents(list, searchTerm);
-    removeCurrentPageLinks();
-    appendPageLinks(listOfMatches);
-});
 
