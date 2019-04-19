@@ -117,3 +117,10 @@ body {
       background-color: #4ba6c3;
       color: #fff;
     }
+
+.message {
+    margin-top: 60px;
+    font-size: 100%;
+    font-weight: bold;
+    color: #888;
+}
