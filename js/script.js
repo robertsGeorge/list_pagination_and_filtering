@@ -135,7 +135,7 @@ inputField.addEventListener('keyup', () => {
 // kept 'submit' eventListener in addition to 'keyup' in case user pastes text in with mouse-clicks (no keyup event)
 // listening for submit event on the parent form element means it can respond to button or input element (i.e. when user presses 'enter' on keyboard).
 searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent form being submitted in normal way, causing page reload
     const searchTerm = inputField.value.toLowerCase();
     const listOfMatches = findMatchingStudents(list, searchTerm);
     removeCurrentPageLinks();
