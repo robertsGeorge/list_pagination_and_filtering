@@ -110,22 +110,19 @@ const searchDiv = document.querySelector('.student-search');
 
 
 searchDiv.addEventListener('click', (e) => {
-    // const list_NodeList = document.querySelectorAll('.student-item')
+
     if (e.target.tagName === 'BUTTON') {
         const inputField = searchDiv.firstElementChild;
         const searchTerm = inputField.value.toLowerCase();
-        // search each element's h3 textContent in list for searchTerm
+
         list.forEach((student) => {
             const studentName = student.querySelector('h3').textContent;
+            
             if ( studentName.match(searchTerm) !== null ) {
                 student.style.display = '';
-            } else {
-                student.style.display = 'none';
-            }
+            } else student.style.display = 'none';
         });
-        // studentName = list[i].querySelector('h3').textContent
     }
-
 });
 
 
