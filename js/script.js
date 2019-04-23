@@ -106,18 +106,12 @@ function removeCurrentPageLinks() {
 function appendSearchForm() {
     const pageHeader = document.querySelector('.page-header');
     const searchForm = document.createElement('form');
-    const searchInput = document.createElement('input');
-    const searchButton = document.createElement('button');
+    const searchFormInnerHTML = `
+        <input type="text" name="search-term" placeholder="Search for students...">
+        <button type="submit" name="submit" value="submit">Search</button>
+    `;
+    searchForm.innerHTML = searchFormInnerHTML;
     searchForm.className = 'student-search';
-    searchInput.type = 'text';
-    searchInput.name = 'search-term';
-    searchInput.placeholder = 'Search for students...';
-    searchButton.type = 'submit';
-    searchButton.name = 'submit';
-    searchButton.value = 'submit';
-    searchButton.textContent = 'Search';
-    searchForm.appendChild(searchInput);
-    searchForm.appendChild(searchButton);
     pageHeader.appendChild(searchForm);
 }
 
