@@ -22,7 +22,7 @@
 - DOM manipulation
     - dynamically generating HTML components, as follows:
         - pagination links
-        - search form
+        - search form (use of template literals to build up HTML content)
 - Event Handling / Event Bubbling / use of The Event Object
 - CSS (styling of 'no matching students' message)
 - Refactoring to apply principle of DRY, replacing repeated patterns with a functions, with parameters to account for any variables within the pattern
